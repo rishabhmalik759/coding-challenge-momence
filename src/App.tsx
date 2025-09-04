@@ -1,7 +1,16 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./components/pages/HomePage";
+import Layout from "./components/Layout";
 
 function App() {
-  return <div>Momence Coding Challenge</div>;
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="*" element={<h2>404 - Page Not Found</h2>} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;
