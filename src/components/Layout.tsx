@@ -41,7 +41,7 @@ const Layout: React.FC = () => {
   return (
     <AppWrapper>
       <AppHeader>
-        <HeaderTitle>CNB Exchange Rates</HeaderTitle>
+        <HeaderTitle>Exchange Rates</HeaderTitle>
         <Nav>
           <StyledNavLink to="/">Home</StyledNavLink>
         </Nav>
