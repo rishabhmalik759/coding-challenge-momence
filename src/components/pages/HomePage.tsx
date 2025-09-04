@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { useExchangeRates } from "../../hooks/useExchangeRates";
+import CurrencyConverterForm from "../CurrencyConverterForm";
 
-const PageHeader = styled.div`
-  text-align: center;
-`;
 const RateContainer = styled.div`
   text-align: center;
 `;
@@ -28,31 +26,31 @@ const HomePage = () => {
 
   return (
     <>
-      <PageHeader>
-        <h1>CNB Exchange Rates</h1>
-      </PageHeader>
       <RateContainer>
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          <RateList>
-            <thead>
-              <RateItemHeader>Amount</RateItemHeader>
-              <RateItemHeader>Currency</RateItemHeader>
-              <RateItemHeader>Code</RateItemHeader>
-              <RateItemHeader>Rate</RateItemHeader>
-            </thead>
-            <tbody>
-              {rates?.map((rate) => (
-                <RateItemRow key={rate.code}>
-                  <RateItemData>{rate.amount}</RateItemData>
-                  <RateItemData>{rate.currency}</RateItemData>
-                  <RateItemData>{rate.code}</RateItemData>
-                  <RateItemData>{rate.rate} CZK</RateItemData>
-                </RateItemRow>
-              ))}
-            </tbody>
-          </RateList>
+          <>
+            <CurrencyConverterForm rates={rates ?? []} />
+            <RateList>
+              <thead>
+                <RateItemHeader>Amount</RateItemHeader>
+                <RateItemHeader>Currency</RateItemHeader>
+                <RateItemHeader>Code</RateItemHeader>
+                <RateItemHeader>Rate</RateItemHeader>
+              </thead>
+              <tbody>
+                {rates?.map((rate) => (
+                  <RateItemRow key={rate.code}>
+                    <RateItemData>{rate.amount}</RateItemData>
+                    <RateItemData>{rate.currency}</RateItemData>
+                    <RateItemData>{rate.code}</RateItemData>
+                    <RateItemData>{rate.rate} CZK</RateItemData>
+                  </RateItemRow>
+                ))}
+              </tbody>
+            </RateList>
+          </>
         )}
       </RateContainer>
     </>
